@@ -14,4 +14,4 @@ miFunción
 Fin
 
 
-en este caso hay dos bucles anidados de O(n) por lo tanto es O(n)*O(n)=O(ncuadrado)
+en este caso hay dos bucles anidados de O(n) por lo tanto es O(n)*O(n)= O(ncuadrado)
