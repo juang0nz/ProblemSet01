@@ -1,11 +1,11 @@
 package ucu.edu.aed.Ejercicios.Ejercicio17;
 
-import ucu.edu.aed.implementaciones.TDAListaImpl;
+import ucu.edu.aed.implementaciones.TDAListaEnlazadaImpl;
 import ucu.edu.aed.tda.TDALista;
 
 public class Biblioteca {
 
-    public TDAListaImpl<Libro> catalogo = new TDAListaImpl<Libro>();
+    public TDAListaEnlazadaImpl<Libro> catalogo = new TDAListaEnlazadaImpl<Libro>();
 
     // agrega un libro a catalogo
 

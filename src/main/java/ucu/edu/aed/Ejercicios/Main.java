@@ -3,10 +3,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-
 import ucu.edu.aed.Ejercicios.Ejercicio17.Biblioteca;
 import ucu.edu.aed.Ejercicios.Ejercicio17.Libro;
-import ucu.edu.aed.implementaciones.TDAListaImpl;
+import ucu.edu.aed.implementaciones.TDAListaEnlazadaImpl;
 
 public class Main {
     public static void main(String[] args) {
@@ -36,8 +35,8 @@ public class Main {
         System.out.println("Existencias del libro 002: " + existenciasLibro2);
 //Listar todos los libros, ordenados por título, con su stock
         System.out.println("Libros ordenados por título:");
-        TDAListaImpl<Libro> ordenado = new TDAListaImpl<>();
-        ordenado = (TDAListaImpl<Libro>) biblioteca.listarPorTitulo();
+        TDAListaEnlazadaImpl<Libro> ordenado = new TDAListaEnlazadaImpl<>();
+        ordenado = (TDAListaEnlazadaImpl<Libro>) biblioteca.listarPorTitulo();
         for (int i = 0; i < ordenado.tamanio(); i++) {
             Libro libro = ordenado.obtener(i);
             System.out.println("Título: " + libro.getTitulo() + ", Código: " + libro.getCodigo() + ", Precio: " + libro.getPrecio() + ", Stock: " + libro.getStock());

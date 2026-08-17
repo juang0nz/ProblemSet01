@@ -4,7 +4,7 @@ import java.util.NoSuchElementException;
 
 import ucu.edu.aed.tda.TDAPila;
 
-public class TDAPilaImpl<T> extends TDAListaImpl<T> implements TDAPila<T> {
+public class TDAPilaImpl<T> extends TDAListaEnlazadaImpl<T> implements TDAPila<T> {
 
     // opbtener el tope de la pila con este metodo
     @Override
