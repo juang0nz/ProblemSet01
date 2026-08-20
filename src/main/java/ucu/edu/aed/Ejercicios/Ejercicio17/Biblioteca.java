@@ -10,10 +10,13 @@ public class Biblioteca {
     // agrega un libro a catalogo
 
     public void agregarLibro(Libro libro) {
-        catalogo.agregar(libro);
+        if (libro == null){
+        }
+        else {
+            catalogo.agregar(libro);}
     }
 
-    public void agregarEjemplares(String codigo, int cantidad) {
+    public void agregarEjemplares(String codigo, int cantidad) { //se puede hacer con BUSCAR HACERLO  DE NUEVO
         for (int i = 0; i < catalogo.tamanio(); i++) {
             Libro libro = catalogo.obtener(i);
             if (libro.getCodigo().equals(codigo)) {
@@ -25,7 +28,7 @@ public class Biblioteca {
     }
 
     public void prestarLibro(String codigo) {
-        for (int i = 0; i < catalogo.tamanio(); i++) {
+        for (int i = 0; i < catalogo.tamanio(); i++) { //se puede hacer con BUSCAR HACERLO  DE NUEVO
             Libro libro = catalogo.obtener(i);
             if (libro.getCodigo().equals(codigo)) {
                 // me fijo antes de restar si el stock ya no es cero
@@ -36,7 +39,7 @@ public class Biblioteca {
         }
     }
 
-    public void devolverLibro(String codigo) {
+    public void devolverLibro(String codigo) { //CAMBIAR LOS METODOS POR BOOLEANOS
         for (int i = 0; i < catalogo.tamanio(); i++) {
             Libro libro = catalogo.obtener(i);
             if (libro.getCodigo().equals(codigo)) {
@@ -46,7 +49,7 @@ public class Biblioteca {
         }
     }
 
-    public void retirarLibro(String codigo) {
+    public void retirarLibro(String codigo) { //SI LIBRO NO ES NULO FALTA Y TENGO QUE USAR BUSCAR 
         for (int i = 0; i < catalogo.tamanio(); i++) {
             Libro libro = catalogo.obtener(i);
             if (libro.getCodigo().equals(codigo)) {
@@ -57,7 +60,7 @@ public class Biblioteca {
     }
 
     public int consultarExistencias(String codigo) {
-        for (int i = 0; i < catalogo.tamanio(); i++) {
+        for (int i = 0; i < catalogo.tamanio(); i++) { //USAR BUSCAR
             Libro libro = catalogo.obtener(i);
             if (libro.getCodigo().equals(codigo)) {
                 return libro.getStock();
@@ -67,8 +70,15 @@ public class Biblioteca {
     }
 
     public TDALista<Libro> listarPorTitulo() {
-        return catalogo.ordenar((libro1, libro2) -> libro1.getTitulo().compareTo(libro2.getTitulo()));
+        return catalogo.ordenar((libro1, libro2) -> libro1.getTitulo().compareTo(libro2.getTitulo())); // 
     }
+    /*
+    Nodo<libro> actual0 catalogo.cabbeza
+    while actual != null;
+         print (actual. dato.nombre);
+         print (actual.dato.stock;)
+         actual = actual.siguiente
+         FIN */
 
     // el trabajo en subgrupos para el subgrupo A es registrar compra o donación de
     // ejemplares, o alta de un libro nuevo, e indicar el valor total agregado al
