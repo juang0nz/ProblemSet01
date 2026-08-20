@@ -3,26 +3,23 @@ package ucu.edu.aed.implementaciones;
 import java.util.NoSuchElementException;
 
 import ucu.edu.aed.tda.TDACola;
-import ucu.edu.aed.tda.TDALista;
 
-public class TDAColaImpl<T> extends TDAListaImpl<T> implements TDACola<T> {
-
-private TDALista <T> lista;
+public class TDAColaImpl<T> extends TDAListaEnlazadaImpl<T> implements TDACola<T> {
 
 // sacamos el primer elemento porque en la cola se inserta al final
 @Override
 public T frente(){
     //me fijo si es vacia
-    if (lista.esVacio()) {
+    if (esVacio()) {
     throw new NoSuchElementException();
     }
     //obtengo el del indice 0
-    return lista.obtener(0);
+    return obtener(0);
 }
 // agrega al final de la lista
 @Override
 public boolean  poneEnCola(T dato){
-    lista.agregar(dato);
+    agregar(dato);
     return true;
 }
 
@@ -30,11 +27,11 @@ public boolean  poneEnCola(T dato){
 @Override
 public T quitaDeCola (){
     //me fijo si es vacia
-    if (lista.esVacio()) {
+    if (esVacio()) {
     throw new NoSuchElementException();
     }
     //saco el primero que es el del indice 0
-    return lista.remover(0);
+    return remover(0);
 
 }
 

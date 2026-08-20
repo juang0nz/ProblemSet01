@@ -2,11 +2,12 @@ package ucu.edu.aed.Ejercicios;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-
+import java.util.LinkedList;
 
 import ucu.edu.aed.Ejercicios.Ejercicio17.Biblioteca;
 import ucu.edu.aed.Ejercicios.Ejercicio17.Libro;
-import ucu.edu.aed.implementaciones.TDAListaImpl;
+import ucu.edu.aed.Ejercicios.Ejercicio20.DirectorioSucursales;
+import ucu.edu.aed.implementaciones.TDAListaEnlazadaImpl;
 
 public class Main {
     public static void main(String[] args) {
@@ -36,8 +37,8 @@ public class Main {
         System.out.println("Existencias del libro 002: " + existenciasLibro2);
 //Listar todos los libros, ordenados por título, con su stock
         System.out.println("Libros ordenados por título:");
-        TDAListaImpl<Libro> ordenado = new TDAListaImpl<>();
-        ordenado = (TDAListaImpl<Libro>) biblioteca.listarPorTitulo();
+        TDAListaEnlazadaImpl<Libro> ordenado = new TDAListaEnlazadaImpl<>();
+        ordenado = (TDAListaEnlazadaImpl<Libro>) biblioteca.listarPorTitulo();
         for (int i = 0; i < ordenado.tamanio(); i++) {
             Libro libro = ordenado.obtener(i);
             System.out.println("Título: " + libro.getTitulo() + ", Código: " + libro.getCodigo() + ", Precio: " + libro.getPrecio() + ", Stock: " + libro.getStock());
@@ -120,6 +121,45 @@ try {
 }
 
  /*-------------------------------------------------------------------------------------------------------------------------------- */
+
+            //EJERCICIO 20
+
+DirectorioSucursales sucursales = new DirectorioSucursales();
+
+try {
+
+    Scanner scanner = new Scanner(
+        new File("src/main/resources/sucursales.txt")
+    );
+
+    while (scanner.hasNextLine()) {
+        String sucursal  = scanner.nextLine();
+        sucursales.agregarSucursal(sucursal);
+    }
+    scanner.close();
+} catch (FileNotFoundException e) {
+    System.out.println("No se encontró sucursales.txt");
+}
+//sucursales.listarSucursales();
+//System.out.println("Cantidad de sucursales: " + sucursales.cantidadSucursales());
+// da 107 la respuesta d.
+//sucursales.quitarSucursal("Chicago");
+//sucursales.listarSucursales();
+//sucursales.agregarSucursal("Hong Kong"); // la que le sigue es Shenzhen
+//sucursales.listarSucursales();
+//sucursales.quitarSucursal("Shenzhen");
+//sucursales.quitarSucursal("Tokio");
+//sucursales.listarSucursales(); //d) Ninguna de las anteriores, no muestra nada
+sucursales.listarSucursales(";"); // lo implemente nuevo para que quede como pedia la letra
+
+
+
+
+
+
+
+
+/*-------------------------------------------------------------------------------------------------------------------------------- */
 
 
 

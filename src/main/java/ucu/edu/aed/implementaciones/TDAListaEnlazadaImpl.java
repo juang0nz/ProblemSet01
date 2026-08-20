@@ -5,7 +5,7 @@ import java.util.function.Predicate;
 
 import ucu.edu.aed.tda.TDALista;
 
-public class TDAListaImpl<T> implements TDALista<T> {
+public class TDAListaEnlazadaImpl<T> implements TDALista<T> {
 
     private Nodo<T> primero;
     private int tamanio;
@@ -186,7 +186,7 @@ public class TDAListaImpl<T> implements TDALista<T> {
     @Override
     public TDALista<T> ordenar(Comparator<T> comparator) {
         // creo la lista que tengo que devolver luego
-        TDAListaImpl<T> lista = new TDAListaImpl<>();
+        TDAListaEnlazadaImpl<T> lista = new TDAListaEnlazadaImpl<>();
 
         Nodo<T> actual = primero;
         while (actual != null) {
@@ -195,7 +195,7 @@ public class TDAListaImpl<T> implements TDALista<T> {
             int posicion = 0;
             // si cumple la comparacion en el dato, guarda posicion y dato para agragar en
             // la lista nueva
-            while (posicion < lista.tamanio && comparator.compare(lista.obtener(posicion), dato) <= 0) {
+            while (posicion < lista.tamanio() && comparator.compare(lista.obtener(posicion), dato) <= 0) {
                 posicion++;
             }
 
@@ -230,10 +230,7 @@ public class TDAListaImpl<T> implements TDALista<T> {
     @Override
     public boolean esVacio(){
 // si la lista es vacia retorna true de una
-        if (primero == null) {
-            return true;
-    }
-    return false;
+            return primero == null;
     }
 //para vaciar una lista, java permite apuntar el primero a null y luego actualizo el tamanio
 @Override
