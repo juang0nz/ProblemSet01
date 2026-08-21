@@ -11,7 +11,7 @@ public Libro (String titulo, String codigo, double precio, int stock) {
     this.titulo = titulo;
     this.codigo = codigo;
     this.precio = precio;
-    this.stock = stock; 
+    this.stock = stock;
 
 }
 

@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import ucu.edu.aed.Ejercicios.Ejercicio17.Biblioteca;
 import ucu.edu.aed.Ejercicios.Ejercicio17.Libro;
 import ucu.edu.aed.Ejercicios.Ejercicio20.DirectorioSucursales;
+import ucu.edu.aed.Ejercicios.Ejercicio23.GestorSucursales;
 import ucu.edu.aed.implementaciones.TDAListaEnlazadaImpl;
 
 public class Main {
@@ -167,6 +168,51 @@ sucursales.listarSucursales(";"); // lo implemente nuevo para que quede como ped
 
 
 
+ /*-------------------------------------------------------------------------------------------------------------------------------- */
 
+        //EJERCICIO 23
+
+        GestorSucursales gestor1 = new GestorSucursales();
+
+        try {
+            gestor1.cargarDesdeArchivo("src/main/resources/suc1.txt");
+        } catch (FileNotFoundException e) {
+            System.out.println("No se encontró suc1.txt");
+        }
+
+        System.out.println("Cantidad de sucursales: " + gestor1.cantidadSucursales());
+        // da 107 respuesta d.
+
+        gestor1.quitarSucursal("Chicago");
+        System.out.println(gestor1.imprimir(";"));
+        // Shenzhen respuesta c.
+
+        GestorSucursales gestor2 = new GestorSucursales();
+
+        try {
+            gestor2.cargarDesdeArchivo("src/main/resources/suc2.txt");
+        } catch (FileNotFoundException e) {
+            System.out.println("No se encontró suc2.txt");
+        }
+
+        gestor2.quitarSucursal("Shenzen");
+        gestor2.quitarSucursal("Tokio");
+        System.out.println("Cantidad final: " + gestor2.cantidadSucursales());
+        System.out.println("Vacio? " + gestor2.estaVacio());
+        // queda vaci respuesta d.
+
+        GestorSucursales gestor3 = new GestorSucursales();
+
+        try {
+            gestor3.cargarDesdeArchivo("src/main/resources/suc3.txt");
+        } catch (FileNotFoundException e) {
+            System.out.println("No se encontró suc3.txt");
+        }
+
+        System.out.println(gestor3.imprimir(";"));
+        //respuesta d.
+
+ /*-------------------------------------------------------------------------------------------------------------------------------- */
     }
+    
 }
