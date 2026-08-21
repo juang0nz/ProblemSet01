@@ -7,8 +7,8 @@ import ucu.edu.aed.tda.TDALista;
 
 public class TDAListaEnlazadaImpl<T> implements TDALista<T> {
 
-    private Nodo<T> primero;
-    private int tamanio;
+    protected  Nodo<T> primero;
+    protected  int tamanio;
 
     /*
      * Lenguaje natural:
