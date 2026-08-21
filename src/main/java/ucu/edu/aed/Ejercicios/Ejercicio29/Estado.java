@@ -1,5 +1,7 @@
 package ucu.edu.aed.Ejercicios.Ejercicio29;
 
 public enum Estado {
-
+HABILITADO,
+LESIONADO,
+SUSPENDIDO
 }
