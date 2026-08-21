@@ -75,7 +75,7 @@ public TDAConjunto<T> union(TDAConjunto<T> otro){
     while (actual != null){
         if (!nuevo.contiene(actual.getDato())) {
             nuevo.agregar(actual.getDato());
-            actual = actual.getSiguiente();
+            
         }
         actual = actual.getSiguiente();
         }
