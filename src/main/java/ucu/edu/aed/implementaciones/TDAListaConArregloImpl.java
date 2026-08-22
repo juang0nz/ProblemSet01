@@ -8,8 +8,8 @@ import ucu.edu.aed.tda.TDALista;
 
 public class TDAListaConArregloImpl<T> implements TDALista<T> {
 
-    private Object[] elementos;
-    private int size = 0;
+    protected Object[] elementos;
+    protected int size = 0;
 
     public TDAListaConArregloImpl() {
         elementos = new Object[10];
@@ -130,7 +130,7 @@ public class TDAListaConArregloImpl<T> implements TDALista<T> {
         return sb.toString();
     }
 
-    private void asegurarCapacidad(int minCapacity) {
+    protected void asegurarCapacidad(int minCapacity) {
         if (minCapacity <= elementos.length) return;
         int newCap = Math.max(minCapacity, elementos.length << 1);
         elementos = Arrays.copyOf(elementos, newCap);
