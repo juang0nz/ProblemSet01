@@ -1,27 +1,21 @@
 package ucu.edu.aed.Ejercicios.Ejercicio29;
 
-public class Jugador {
+public class Jugador implements Comparable<Jugador> {
 
-    private Estado estado;
     private String nombre;
-    private int partidasJugadas;
     private Division division;
+    private int partidasJugadas;
+    private Estado estado;
 
+    public Jugador(
+            String nombre,
+            Division division,
+            int partidasJugadas,
+            Estado estado) {
 
-    public Jugador (Estado estado, String nombre, int partidasJugadas, Division division) {
-        this.estado = estado;
         this.nombre = nombre;
-        this.partidasJugadas = partidasJugadas;
         this.division = division;
-    }
-
-    //getters and setters
-
-    public Estado getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Estado estado) {
+        this.partidasJugadas = partidasJugadas;
         this.estado = estado;
     }
 
@@ -33,14 +27,6 @@ public class Jugador {
         this.nombre = nombre;
     }
 
-    public int getPartidasJugadas() {
-        return partidasJugadas;
-    }
-
-    public void setPartidasJugadas(int partidasJugadas) {
-        this.partidasJugadas = partidasJugadas;
-    }
-
     public Division getDivision() {
         return division;
     }
@@ -49,4 +35,50 @@ public class Jugador {
         this.division = division;
     }
 
+    public int getPartidasJugadas() {
+        return partidasJugadas;
+    }
+
+    public void setPartidasJugadas(int partidasJugadas) {
+        this.partidasJugadas = partidasJugadas;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+    /**
+     * Orden de prioridad para habilitados:
+     * 1) mayor división,
+     * 2) menor cantidad de partidas,
+     * 3) si hay empate, se conserva el orden de ingreso.
+     */
+    @Override
+    public int compareTo(Jugador otro) {
+        if (otro == null) {
+            return 1;
+        }
+
+        if (this.division.ordinal() != otro.division.ordinal()) {
+            return Integer.compare(otro.division.ordinal(), this.division.ordinal());
+        }
+
+        if (this.partidasJugadas != otro.partidasJugadas) {
+            return Integer.compare(this.partidasJugadas, otro.partidasJugadas);
+        }
+
+        return 0;
+    }
+
+    @Override
+    public String toString() {
+        return nombre
+                + " - " + division
+                + " - Partidas: " + partidasJugadas
+                + " - Estado: " + estado;
+    }
 }
