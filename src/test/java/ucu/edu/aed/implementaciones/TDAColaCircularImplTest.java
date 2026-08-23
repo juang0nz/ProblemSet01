@@ -5,19 +5,19 @@ import junit.framework.TestCase;
 import java.util.NoSuchElementException;
 
 /**
- * Casos de prueba para {@link TDAColaCircularImpl}, incluyendo
+ * Casos de prueba para {@link TDAColaCircularConArregloImpl}, incluyendo
  * cola vacía, cola llena y wraparound del vector.
  */
 public class TDAColaCircularImplTest extends TestCase {
 
     public void testColaNuevaEsVacia() {
-        TDAColaCircularImpl<Integer> cola = new TDAColaCircularImpl<>(4);
+        TDAColaCircularConArregloImpl<Integer> cola = new TDAColaCircularConArregloImpl<>(4);
         assertTrue(cola.esVacio());
         assertEquals(0, cola.tamanio());
     }
 
     public void testFrenteConColaVaciaLanzaExcepcion() {
-        TDAColaCircularImpl<Integer> cola = new TDAColaCircularImpl<>(4);
+        TDAColaCircularConArregloImpl<Integer> cola = new TDAColaCircularConArregloImpl<>(4);
         try {
             cola.frente();
             fail("Se esperaba NoSuchElementException");
@@ -27,7 +27,7 @@ public class TDAColaCircularImplTest extends TestCase {
     }
 
     public void testQuitaDeColaConColaVaciaLanzaExcepcion() {
-        TDAColaCircularImpl<Integer> cola = new TDAColaCircularImpl<>(4);
+        TDAColaCircularConArregloImpl<Integer> cola = new TDAColaCircularConArregloImpl<>(4);
         try {
             cola.quitaDeCola();
             fail("Se esperaba NoSuchElementException");
@@ -37,18 +37,18 @@ public class TDAColaCircularImplTest extends TestCase {
     }
 
     public void testPoneEnColaYFrente() {
-        TDAColaCircularImpl<Integer> cola = new TDAColaCircularImpl<>(4);
+        TDAColaCircularConArregloImpl<Integer> cola = new TDAColaCircularConArregloImpl<>(4);
         cola.poneEnCola(1);
         cola.poneEnCola(2);
         assertEquals(Integer.valueOf(1), cola.frente());
     }
 
     public void testColaLlenaLanzaExcepcion() {
-        TDAColaCircularImpl<Integer> cola = new TDAColaCircularImpl<>(3);
+        TDAColaCircularConArregloImpl<Integer> cola = new TDAColaCircularConArregloImpl<>(3);
         cola.poneEnCola(1);
         cola.poneEnCola(2);
         cola.poneEnCola(3);
-        assertTrue(cola.estaLlena());
+        assertEquals(3, cola.tamanio());
 
         try {
             cola.poneEnCola(4);
@@ -59,7 +59,7 @@ public class TDAColaCircularImplTest extends TestCase {
     }
 
     public void testWraparoundDelVector() {
-        TDAColaCircularImpl<Integer> cola = new TDAColaCircularImpl<>(3);
+        TDAColaCircularConArregloImpl<Integer> cola = new TDAColaCircularConArregloImpl<>(3);
 
         cola.poneEnCola(1); // [1, _, _]  fondo=1
         cola.poneEnCola(2); // [1, 2, _]  fondo=2
@@ -76,10 +76,10 @@ public class TDAColaCircularImplTest extends TestCase {
     }
 
     public void testQuitarYVolverAPonerReutilizaEspacio() {
-        TDAColaCircularImpl<Integer> cola = new TDAColaCircularImpl<>(2);
+        TDAColaCircularConArregloImpl<Integer> cola = new TDAColaCircularConArregloImpl<>(2);
         cola.poneEnCola(1);
         cola.poneEnCola(2);
-        assertTrue(cola.estaLlena());
+        assertEquals(2, cola.tamanio());
 
         cola.quitaDeCola();
         cola.poneEnCola(3);
