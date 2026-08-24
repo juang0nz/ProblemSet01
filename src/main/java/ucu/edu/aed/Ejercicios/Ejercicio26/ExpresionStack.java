@@ -1,7 +1,9 @@
 package ucu.edu.aed.Ejercicios.Ejercicio26;
 
 import java.util.List;
-import java.util.Stack;
+
+import ucu.edu.aed.tda.TDAPila;
+import ucu.edu.aed.implementaciones.TDAPilaImpl;
 
 public class ExpresionStack {
 
@@ -11,20 +13,20 @@ public class ExpresionStack {
             throw new IllegalArgumentException("La expresión no puede ser nula");
         }
 
-        Stack<Character> pila = new Stack<>();
+        TDAPila<Character> pila = new TDAPilaImpl<>();
 
         for (Character caracter : expresion) {
 
             if (caracter == '{' || caracter == '[') {
-                pila.push(caracter);
+                pila.mete(caracter);
 
             } else if (caracter == '}' || caracter == ']') {
 
-                if (pila.empty()) {
+                if (pila.esVacio()) {
                     return false;
                 }
 
-                Character apertura = pila.pop();
+                Character apertura = pila.saca();
 
                 if (caracter == '}' && apertura != '{') {
                     return false;
@@ -36,6 +38,6 @@ public class ExpresionStack {
             }
         }
 
-        return pila.empty();
+        return pila.esVacio();
     }
 }
